@@ -9,6 +9,9 @@ class User(models.Model):
     def __str__(self):
         return self.user_name
     
+    def username_email(self):
+        return self.email_id
+    
 
 class Tweet(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -20,6 +23,8 @@ class Tweet(models.Model):
     def __str__(self):
         return self.tweet_box
     
+    def first_10_characters(self):
+        return self.tweet_box[:10]+'...'
  
     
     
