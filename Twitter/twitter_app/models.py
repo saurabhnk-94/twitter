@@ -4,7 +4,7 @@ from django.db import models
 class User(models.Model):
     user_name = models.CharField(max_length=50)
     email_id =models.EmailField(unique=True)
-    delete = models.BooleanField(default=False)
+    is_deleted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user_name
