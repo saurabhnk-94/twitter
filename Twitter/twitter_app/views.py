@@ -6,26 +6,26 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import generics
 
-from .models import User, Tweet
-from .serializers import UserSerializers, TweetSerializers
+from .models import TweetUser, Tweet
+from .serializers import TweetUserSerializers, TweetSerializers
 
 
 @api_view(['GET',])
 def api_get_all_user_list(request):
-    user = User.objects.all()
+    user = TweetUser.objects.all()
     if request.method == 'GET':
-        serializer = UserSerializers(user, many=True)
+        serializer = TweetUserSerializers(user, many=True)
         return Response(serializer.data)
     
 
 @api_view(['GET',])
 def api_get_user_detail_view(request, id):
     try: 
-        user = User.objects.get(id=id)
-    except User.DoesNotExist:
+        user = TweetUser.objects.get(id=id)
+    except TweetUser.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer = UserSerializers(user)
+        serializer = TweetUserSerializers(user)
         return Response(serializer.data)
 
 
@@ -41,17 +41,17 @@ def api_get_all_tweet_list(request):
 def api_get_tweet_detail_view(request, id):
     try: 
         tweet = Tweet.objects.get(id=id)
-    except User.DoesNotExist:
+    except TweetUser.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer = UserSerializers(tweet)
+        serializer = TweetSerializers(tweet)
         return Response(serializer.data)
 
 
 @api_view(['POST'])
 def api_create_user(request):
     if request.method == 'POST':
-        serializer = UserSerializers(data=request.data)
+        serializer = TweetUserSerializers(data=request.data)
         data = {}
         if serializer.is_valid():
             serializer.save()
@@ -84,7 +84,7 @@ def api_update_tweet(request, id):
     except Tweet.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)  
     if request.method == 'PUT':
-        serializer = TweetSerializers(tweet)
+        serializer = TweetSerializers(tweet, data=request.data)
         if serializer.is_valid():
             data = {}
             serializer.save()

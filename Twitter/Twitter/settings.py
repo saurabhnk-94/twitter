@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'twitter',
-        'USER': 'twitteruser',
+        'USER': 'twitterappuser',
         'PASSWORD': 'twitter',
         'HOST': 'localhost',
         'PORT': ''

@@ -1,8 +1,8 @@
 from django.db import models
 
 
-class User(models.Model):
-    user_name = models.CharField(max_length=50)
+class TweetUser(models.Model):
+    user_name = models.CharField(max_length=50,unique=True)
     email_id =models.EmailField(unique=True)
     is_deleted = models.BooleanField(default=False)
 
@@ -14,7 +14,7 @@ class User(models.Model):
     
 
 class Tweet(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(TweetUser, on_delete=models.CASCADE)
     tweet_box = models.TextField(max_length=140)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
