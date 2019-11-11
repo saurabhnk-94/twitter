@@ -48,3 +48,46 @@ def api_get_tweet_detail_view(request, id):
         return Response(serializer.data)
 
 
+@api_view(['POST'])
+def api_create_user(request):
+    if request.method == 'POST':
+        serializer = UserSerializers(data=request.data)
+        data = {}
+        if serializer.is_valid():
+            serializer.save()
+            data['success'] = 'Created Successfully'
+            return Response(data, status=status.HTTP_201_CREATED)
+        else:
+            data['failure'] = 'Creation Unsuccessful'
+            return Response(data, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['POST'])
+def api_create_tweet(request):
+    if request.method == 'POST':
+        serializer = TweetSerializers(data=request.data)
+        data = {}
+        if serializer.is_valid():
+            serializer.save()
+            data['success'] = 'Created Successfully'
+            return Response(data, status=status.HTTP_201_CREATED)
+        else:
+            data['failure'] = 'Creation Unsuccessful'
+            return Response(data, status=status.HTTP_404_NOT_FOUND)
+
+
+
+@api_view(['PUT'])
+def api_update_tweet(request, id):
+    try:
+        tweet = Tweet.objects.get(id=id)
+    except Tweet.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)  
+    if request.method == 'PUT':
+        serializer = TweetSerializers(tweet)
+        if serializer.is_valid():
+            data = {}
+            serializer.save()
+            data['success'] = "Update Successful"
+            return Response(serializer.data) 
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)       
