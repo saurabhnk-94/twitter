@@ -21,7 +21,7 @@ function tweetResponse() {
             // console.log(tweetHttpRequest.responseText);
             let tweetData = JSON.parse(tweetHttpRequest.responseText);
             let idtweetData = document.getElementById('tweet-1');
-            for (let i = 0; i < tweetData.length; i++) {
+            for (let i = tweetData.length - 1; i >= 0; i--) {
                 let obj = tweetData[i];
                 idtweetData.insertAdjacentHTML('beforeend', '<div id="tweet-structure">' + obj.tweet_box + '<br>' + obj.user + '<br>' + obj.date_updated + '</div>')
                 console.log(tweetData)
@@ -29,3 +29,17 @@ function tweetResponse() {
         }
     }
 }
+
+// document.getElementById('post').addEventListener('click', postTweet)
+
+// let postHttpRequest;
+
+// function postTweet() {
+//     postHttpRequest = new XMLHttpRequest()
+//     if (!postHttpRequest) {
+//         alert("Could not create request!");
+//         return false;
+//     }
+
+//     postHttpRequest.onreadystatechange =
+// }

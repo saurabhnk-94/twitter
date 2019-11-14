@@ -14,7 +14,7 @@ from .serializers import TweetUserSerializers, TweetSerializers, TweetSoftSerial
 def api_get_all_user_list(request):
     user = TweetUser.objects.all()
     if request.method == 'GET':
-        serializer = TweetUserSerializers(user, many=True)
+        serializer = TweetUserSerializers(user, many=True)  
         return Response(serializer.data)
     
 
