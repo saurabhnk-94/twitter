@@ -40,6 +40,7 @@ function tweetResponse() {
 //         alert("Could not create request!");
 //         return false;
 //     }
+//     alert("This is working!!")
+//     tweetTitle = document.getElementById("post")
 
-//     postHttpRequest.onreadystatechange =
 // }
