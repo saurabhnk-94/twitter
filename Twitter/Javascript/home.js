@@ -23,7 +23,7 @@ function tweetResponse() {
             let idtweetData = document.getElementById('tweet-1');
             for (let i = 0; i < tweetData.length; i++) {
                 let obj = tweetData[i];
-                idtweetData.insertAdjacentHTML('beforeend', '<div id="tweet-structure">' + obj.tweet_box + '</div>')
+                idtweetData.insertAdjacentHTML('beforeend', '<div id="tweet-structure">' + obj.tweet_box + '<br>' + obj.user + '<br>' + obj.date_updated + '</div>')
                 console.log(tweetData)
             }
         }

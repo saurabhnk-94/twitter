@@ -147,5 +147,6 @@ body {
 #tweet-structure {
     border: 1px solid blue;
     margin: 20px;
-    color: #fff;
+    color: black;
+    background-color: whitesmoke;
 }
