@@ -11,7 +11,7 @@ function tweetDisplay() {
     }
 
     tweetHttpRequest.onreadystatechange = tweetResponse;
-    tweetHttpRequest.open('GET', 'http://127.0.0.1:8003/tweet');
+    tweetHttpRequest.open('GET', 'http://127.0.0.1:8000/tweet');
     tweetHttpRequest.send();
 }
 
@@ -24,7 +24,7 @@ function tweetResponse() {
             for (let i = tweetData.length - 1; i >= 0; i--) {
                 let obj = tweetData[i];
                 idtweetData.insertAdjacentHTML('beforeend', '<div id="tweet-structure">' + obj.tweet_box + '<br>' + obj.user + '<br>' + obj.date_updated + '</div>')
-                console.log(tweetData)
+                console.log("GET tweet data:", tweetData)
             }
         }
     }
@@ -42,10 +42,10 @@ function postTweet() {
     }
     alert("This is working!!")
     tweetTitle = document.getElementById("post-input").value;
-
+    console.log("tweet Title: ,", tweetTitle);
     postHttpRequest.onreadystatechange = checkPostResponse;
 
-    postHttpRequest.open('POST', 'http://127.0.0.1:8003/tweet/create');
+    postHttpRequest.open('POST', 'http://127.0.0.1:8000/tweet/create');
     postHttpRequest.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 
     let bodyJson = {
@@ -53,7 +53,7 @@ function postTweet() {
         tweet_box: tweetTitle
     };
     let jsonString = JSON.stringify(bodyJson);
-    console.log(jsonString);
+    console.log("Creating the json", jsonString);
 
     postHttpRequest.send(jsonString);
 }
