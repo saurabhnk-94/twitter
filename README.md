@@ -1,4 +1,4 @@
-# twitter-repo
+# Twitter 
 
 Features:
 1. A user can post tweets.
@@ -12,6 +12,33 @@ Features:
 9. User can soft delete his tweet.
 10. User can update his tweet.
 
+To run this in your local system :
+
+Clone this repo:
+```
+git clone https://github.com/saurabhnk-94/twitter-repo.git
+```
+Get inside the repo, type this is terminal:
+```
+cd twiiter-repo
+```
+
+Create a virtual environment inside the repo:
+```
+python3 -m venv .venv
+```
+After that activate the virtual environment by typing:
+```
+source .venv/bin/activate
+```
+Next step is to install all the dependencies into your virtual environment:
+```
+pip3 install -r requuirement.txt
+```
+Next get into the project directory by typing:
+```
+cd Twitter
+```
 
 About the project:
 >> My project name is Twitter.
@@ -21,7 +48,8 @@ About the project:
 >> Tweet: user as a foreign key, tweet_box for the tweet, date created, date_updated and is_deleted(default=false)
 >> The ordering will be done through the updated date and time field.
 >> Rest API is being used and in that we have used function based view.
-
+>> Partial output of UI is done and is running fine.
+>> UI is done using JavaScript and html and also css for styling.
 Summary:
 Language: Python - version(3.6.8)
 Framework: Django - version(2.2.7)
