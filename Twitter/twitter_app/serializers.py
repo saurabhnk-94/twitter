@@ -8,7 +8,7 @@ class TweetUserSerializers(serializers.ModelSerializer):
         
 
 class TweetSerializers(serializers.ModelSerializer):
-    # user = TweetUserSerializers()
+    # user = serializers.ReadOnlyField(source='user.user_name')
     class Meta:
         model = Tweet
         fields = ('id', 'user', 'tweet_box','date_created', 'date_updated','is_deleted')
