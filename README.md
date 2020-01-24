@@ -39,6 +39,27 @@ Next get into the project directory by typing:
 ```
 cd Twitter
 ```
+Type 3 commands in order before for the project to run:
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+Now to access the admin page before running the server create a superuser:
+```
+python3 manage.py createsuperuser
+fill the details :
+username: <ur choice>
+email: <optional>
+password: <password>
+confirm password: <confirm the password>
+```
+After filling all these to run the project:
+```
+python3 manage.py runserver
+```
+
+For UI :
+Get inside the Javascript directory copy the path of home.html and paste it in the browser.
 
 About the project:
 >> My project name is Twitter.
