@@ -11,7 +11,7 @@ function tweetDisplay() {
     }
 
     tweetHttpRequest.onreadystatechange = tweetResponse;
-    tweetHttpRequest.open('GET', 'http://127.0.0.1:8000/tweet');
+    tweetHttpRequest.open('GET', 'http://127.0.0.1:8003/tweet');
     tweetHttpRequest.send();
 }
 
@@ -30,17 +30,39 @@ function tweetResponse() {
     }
 }
 
-// document.getElementById('post').addEventListener('click', postTweet)
+document.getElementById('post').addEventListener('click', postTweet)
 
-// let postHttpRequest;
+let postHttpRequest;
 
-// function postTweet() {
-//     postHttpRequest = new XMLHttpRequest()
-//     if (!postHttpRequest) {
-//         alert("Could not create request!");
-//         return false;
-//     }
-//     alert("This is working!!")
-//     tweetTitle = document.getElementById("post")
+function postTweet() {
+    postHttpRequest = new XMLHttpRequest()
+    if (!postHttpRequest) {
+        alert("Could not create request!");
+        return false;
+    }
+    alert("This is working!!")
+    tweetTitle = document.getElementById("post-input").value;
 
-// }
+    postHttpRequest.onreadystatechange = checkPostResponse;
+
+    postHttpRequest.open('POST', 'http://127.0.0.1:8003/tweet/create');
+    postHttpRequest.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+
+    let bodyJson = {
+        user: 1,
+        tweet_box: tweetTitle
+    };
+    let jsonString = JSON.stringify(bodyJson);
+    console.log(jsonString);
+
+    postHttpRequest.send(jsonString);
+}
+
+function checkPostResponse() {
+    if (postHttpRequest.readyState === XMLHttpRequest.DONE) {
+        if (postHttpRequest.status === 201 | postHttpRequest.status === 204) {
+            alert("Update is successful")
+        }
+    }
+
+}
