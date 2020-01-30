@@ -16,7 +16,7 @@ To run this in your local system :
 
 Clone this repo:
 ```
-git clone https://github.com/saurabhnk-94/twitter-repo.git
+git clone https://github.com/saurabhnk-94/twitter.git
 ```
 Get inside the repo, type this is terminal:
 ```
